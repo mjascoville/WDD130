@@ -6,6 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dorodangos</title>
     <link rel="stylesheet" href="styles/style.css">
+    <script>let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        // Next/previous controls
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        // Thumbnail image controls
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("demo");
+          let captionText = document.getElementById("caption");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+          captionText.innerHTML = dots[slideIndex-1].alt;
+        }</script>
 </head>
 <body>
     <header>
@@ -18,10 +48,38 @@
     <main class="home-page">
         <h1>All About Dorodangos</h1>
         <p>Welcome to the wonderful world of dorodangos! This site is my humble contribution to the preservation of the art of dorodangos. What is a dorodango, you might ask? Well, you've come to the right place to learn about them! This site will explain the "what" and the "why" of dorodangos (navigate to History above for more information), and will also go into the process of creating these wonderful orbs of earth. Below is a small gallery of my own work, and if you are at all intrigued, you have already taken your first step down the journey of creating your own dorodangos!</p>
-        <div class="home-images">
-            <img src="images/home_1.jpg" alt="Dorodango 1">
-            <img src="images/home_2.jpg" alt="Dorodango 2">
-        </div>
+
     </main>
+
+<div class="container">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 2</div>
+        <img src="images/home_1.jpg" style="width:25%">
+    </div>
+  
+    <div class="mySlides">
+      <div class="numbertext">2 / 2</div>
+        <img src="images/home_2.jpg" style="width:25%">
+    </div>
+  
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  
+    <!-- Image text -->
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+  
+    <!-- Thumbnail images -->
+    <div class="row">
+      <div class="column">
+        <img class="demo cursor" src="images/home_1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Handmade Dorodango">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="images/home_2.jpg" style="width:100%" onclick="currentSlide(2)" alt="Handmade Dorodango">
+      </div>
+    </div>
+  </div>
 </body>
 </html>
